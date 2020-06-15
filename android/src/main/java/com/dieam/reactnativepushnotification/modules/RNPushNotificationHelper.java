@@ -328,7 +328,9 @@ public class RNPushNotificationHelper {
 
             Bitmap largeIconBitmap = BitmapFactory.decodeResource(res, largeIconResId);
 
-            notification.setLargeIcon(largeIconBitmap);
+            if (largeIconResId != 0 && (largeIcon != null || Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)) {
+                notification.setLargeIcon(largeIconBitmap);
+            }
 
             notification.setSmallIcon(smallIconResId);
             String bigText = bundle.getString("bigText");
